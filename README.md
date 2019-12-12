@@ -1,5 +1,7 @@
 # imagefs_web
 
+> Web Client for [ImageFS](https://github.com/bluicezhen/ImageFS)
+
 ## Project setup
 ```
 yarn install
