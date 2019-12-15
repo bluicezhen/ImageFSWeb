@@ -15,6 +15,7 @@
 import TopBar from "./components/TopBar.vue";
 import Main from "./components/Main.vue";
 import Ajax from "./tools/Ajax.js";
+import qiniu from "watermelon-qiniu";
 
 export default {
   name: "app",
@@ -25,8 +26,15 @@ export default {
 
         // Get Qiniu Upload Toekn
         let res = await Ajax("POST", "/file/", { body: { title: file.name } });
-        let qiniu_upload_key = res.qiniu_upload_key;
-        console.log(qiniu_upload_key);
+        let qiniu_upload_token = res.qiniu_upload_token;
+        let qiniu_upload_key = res.id;
+
+        // Upload
+        try {
+          await qiniu.upload(file, qiniu_upload_key, qiniu_upload_token);
+        } catch (e) {
+          console.log("err", e);
+        }
       }
     }
   },

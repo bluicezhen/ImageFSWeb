@@ -7983,6 +7983,11 @@ watchpack@^1.6.0:
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
 
+watermelon-qiniu@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/watermelon-qiniu/-/watermelon-qiniu-0.1.0.tgz#97f7d3c0b20ed7a03e07f92d081e9cee82ca5610"
+  integrity sha1-l/fTwLIO16A+B/ktCB6c7oLKVhA=
+
 wbuf@^1.1.0, wbuf@^1.7.3:
   version "1.7.3"
   resolved "https://registry.npm.taobao.org/wbuf/download/wbuf-1.7.3.tgz#c1d8d149316d3ea852848895cb6a0bfe887b87df"
