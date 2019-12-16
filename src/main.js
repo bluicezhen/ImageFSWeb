@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './plugins/element.js'
+import { Button, Menu, Message } from 'element-ui';
+
+Vue.use(Button);
+Vue.use(Menu);
+Vue.prototype.$message = Message
 
 Vue.config.productionTip = false
 

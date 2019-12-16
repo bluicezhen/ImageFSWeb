@@ -14,8 +14,8 @@
 <script>
 import TopBar from "./components/TopBar.vue";
 import Main from "./components/Main.vue";
-import Ajax from "./tools/Ajax.js";
 import qiniu from "watermelon-qiniu";
+import serverSDK from "./tools/serverSDK";
 
 export default {
   name: "app",
@@ -25,13 +25,13 @@ export default {
         let file = fileList[0];
 
         // Get Qiniu Upload Toekn
-        let res = await Ajax("POST", "/file/", { body: { title: file.name } });
-        let qiniu_upload_token = res.qiniu_upload_token;
-        let qiniu_upload_key = res.id;
+        let [fileID, qiniuUploadToken] = await serverSDK.fileCreate(file.name);
 
         // Upload
         try {
-          await qiniu.upload(file, qiniu_upload_key, qiniu_upload_token);
+          await qiniu.upload(file, fileID, qiniuUploadToken);
+          await serverSDK.fileUpdateIsUploadQiniu(fileID);
+          this.$message({ message: "Image Upload Success", type: "success" });
         } catch (e) {
           console.log("err", e);
         }
