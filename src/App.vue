@@ -16,6 +16,7 @@ import TopBar from "./components/TopBar.vue";
 import Main from "./components/Main.vue";
 import qiniu from "watermelon-qiniu";
 import serverSDK from "./tools/serverSDK";
+import { Loading } from 'element-ui';
 
 export default {
   name: "app",
@@ -23,6 +24,9 @@ export default {
     async clickUploadFile(fileList) {
       if (fileList.length != 0) {
         let file = fileList[0];
+        
+        // ------ Begin Upload --------
+        let loadingInstance = Loading.service({ text: "Uploading" });
 
         // Get Qiniu Upload Toekn
         let [fileID, qiniuUploadToken] = await serverSDK.fileCreate(file.name);
@@ -35,6 +39,9 @@ export default {
         } catch (e) {
           console.log("err", e);
         }
+
+        loadingInstance.close();
+        // ------- End Upload ------
       }
     }
   },
