@@ -27,12 +27,11 @@ export default {
         
         // ------ Begin Upload --------
         let loadingInstance = Loading.service({ text: "Uploading" });
-
-        // Get Qiniu Upload Toekn
-        let [fileID, qiniuUploadToken] = await serverSDK.fileCreate(file.name);
-
-        // Upload
         try {
+          // Get Qiniu Upload Toekn
+          let [fileID, qiniuUploadToken] = await serverSDK.fileCreate(file.name);
+
+          // Upload
           await qiniu.upload(file, fileID, qiniuUploadToken);
           await serverSDK.fileUpdateIsUploadQiniu(fileID);
           this.$message({ message: "Image Upload Success", type: "success" });

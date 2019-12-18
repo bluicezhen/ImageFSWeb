@@ -11,7 +11,7 @@ export default {
   name: "Mian",
   beforeCreate: async function(){
     let res = await serverSDK.fileListGet();
-    console.log(res);
+    console.log("fileList", res);
   }
 };
 </script>

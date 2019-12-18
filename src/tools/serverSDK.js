@@ -1,15 +1,15 @@
-import Ajax from "./Ajax.js";
+import ajax from "./Ajax.js";
 
 export default {
-    "fileCreate": async function (title) {
-        let res = await Ajax("POST", "/file/", { body: { title: title } });
-        return [res.id, res.qiniu_upload_token];
-    },
+  "fileCreate": async function (title) {
+    let res = await ajax("POST", "/file/", { bodyParams: { title: title } });
+    return [res.data.id, res.data.qiniu_upload_token];
+  },
 	"fileListGet": async function () {
-		let res = await Ajax("GET", "/file/", {});
-        return res.results;
+		let res = await ajax("GET", "/file/", {});
+    return res.data;
 	},
-    "fileUpdateIsUploadQiniu": async function (fileID) {
-        await Ajax("PATCH", `/file/${fileID}/`, { body: { is_upload_qiniu: true } })
-    }
+  "fileUpdateIsUploadQiniu": async function (fileID) {
+    await ajax("PATCH", `/file/${fileID}/`, { bodyParams: { is_upload_qiniu: true } })
+  }
 };
