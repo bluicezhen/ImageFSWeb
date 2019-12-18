@@ -5,9 +5,13 @@
 </template>
 
 <script>
+import serverSDK from '../tools/serverSDK.js';
+
 export default {
   name: "Mian",
-  methods: {
+  beforeCreate: async function(){
+    let res = await serverSDK.fileListGet();
+    console.log(res);
   }
 };
 </script>
