@@ -1,13 +1,13 @@
 <template>
   <div id="app">
+    <TopBar />
+    <Main />
     <input
       id="id-upload"
       type="file"
       accept="image/*"
       v-on:change="clickUploadFile($event.target.files)"
     />
-    <TopBar />
-    <Main />
   </div>
 </template>
 
@@ -58,6 +58,7 @@ body {
   flex-direction: column;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   display: flex;
+  height: 100vh;
 }
 #id-upload {
   display: none;

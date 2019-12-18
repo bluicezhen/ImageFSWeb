@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <el-button v-on:click="buttonOnClick()">Upload</el-button>
+    <span>Main Area</span>
   </div>
 </template>
 
@@ -8,9 +8,6 @@
 export default {
   name: "Mian",
   methods: {
-    buttonOnClick: function() {
-      document.getElementById('id-upload').click()
-    }
   }
 };
 </script>
@@ -20,7 +17,6 @@ export default {
   align-items: center;
   justify-content: center;
   display: flex;
-  flex-grow: 1;
-  height: 100vh;
+  flex-grow: 100;
 }
 </style>
