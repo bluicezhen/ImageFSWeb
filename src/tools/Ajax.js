@@ -8,12 +8,17 @@ const host = 'http://localhost:8000';
  * @param {string} bodyParams 
  * @return {fetch}
  */
-export default async function (method, url, { body = {} }) {
-    let res = await fetch(`${host}${url}`, {
+export default async function (method, url, { body = null }) {
+    let fetchParams = {
         method: method,
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(body)
-    });
+    }
+    
+    if (body !== null) {
+        fetchParams["body"] = body
+    }
+    
+    let res = await fetch(`${host}${url}`, );
     let data = res.json()
     return data
 }
