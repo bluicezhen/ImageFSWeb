@@ -1,7 +1,7 @@
 <template>
   <el-row id="main" :gutter="20" type="flex">
     <el-col :span="4" v-for="image in imageList" v-bind:key="image.id">
-      <ImageContent v-bind:imageURL="image.url"></ImageContent>
+      <ImageContent v-bind:image="image"></ImageContent>
     </el-col>
   </el-row>
 </template>
@@ -33,7 +33,6 @@ export default {
   padding: 20px;
 }
 #main .el-col {
-  height: 16.66667vw;
   padding: 10px;
 }
 </style>
