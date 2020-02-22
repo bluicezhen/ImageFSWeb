@@ -6,7 +6,7 @@ export default {
     return [res.data.id, res.data.qiniu_upload_token];
   },
 	"fileListGet": async function () {
-		let res = await ajax("GET", "/file/", {});
+		let res = await ajax("GET", "/file/", { urlParams: { page_size: 12, page: 1 } });
     return res.data;
 	},
   "fileUpdateIsUploadQiniu": async function (fileID) {

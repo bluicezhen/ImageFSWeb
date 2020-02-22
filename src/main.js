@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { Button, Card, Col, Header, Image, Message, Row } from 'element-ui';
+import { Button, Card, Col, Header, Image, Message, Pagination, Row } from 'element-ui';
 
 Vue.use(Button);
 Vue.use(Card);
 Vue.use(Col);
 Vue.use(Header);
 Vue.use(Image);
+Vue.use(Pagination);
 Vue.use(Row);
 Vue.prototype.$message = Message
 

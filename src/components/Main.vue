@@ -1,8 +1,14 @@
 <template>
-  <el-row id="main" :gutter="20" type="flex">
+  <el-row id="main" type="flex">
     <el-col :span="4" v-for="image in imageList" v-bind:key="image.id">
       <ImageContent v-bind:image="image"></ImageContent>
     </el-col>
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="imageCount"
+      page-size="12">
+    </el-pagination>
   </el-row>
 </template>
 
@@ -14,11 +20,14 @@ export default {
   name: "Mian",
   components: { ImageContent },
   data: function() {return {
-    imageList: []
+    imageList: [],
+    imageCount: 0,
+    pageSize: 12,
   }},
   beforeCreate: async function(){
     let res = await serverSDK.fileListGet();
     this.$data.imageList = res.results;
+    this.$data.imageCount = res.count;
   }
 };
 </script>
